@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   #before_action :twitter_client, only: [:create]
-  require "nkf"
+
   attr_accessor :cont
   include PostsHelper
   
