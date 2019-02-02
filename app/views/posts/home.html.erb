@@ -1,0 +1,61 @@
+
+<h1 class="first">縦文字変換</h1>
+
+<div class="row">
+  <div class="col-md-12">
+      <textarea class="content1"></textarea><br>
+
+      <input class="btn btn-primary click">
+
+  </div>
+</div>
+  
+  <br>
+<div class="row">
+  <div class="col-md-12">
+    <textarea class="content2"></textarea>
+    
+  </div>
+</div>
+
+<script>
+  var toFullWidth = function(value) {
+    if (!value) return value;
+    return String(value).replace(/[!-~]/g, function(all) {
+        return String.fromCharCode(all.charCodeAt(0) + 0xFEE0);
+    });
+  };
+
+
+  $(".click").click(function(){
+    var con = $(".content1").val();
+    con = con.split(/\n/g);
+    
+    var max_vert = Math.max.apply(null,con.map(function(value){
+      return (value.length);
+    }));
+    
+    var e = "";
+    
+    for(var i=0;  i < max_vert;  i++){
+      for (var p = con.length - 1; p > -1; p--) {
+        var content = con[p];
+        if(content.length === 0){
+          e += "　"
+        }else{
+          var one_char = content.split("")[i];
+          
+          if(one_char !== undefined){
+            e += one_char
+          }else{
+            e += "　"
+          }
+        }
+      }
+      e += "\n"
+    }
+    var k = toFullWidth(e)+"\n"+"https://vertical-tweet.herokuapp.com/"+"\n"+"#縦文字変換";
+    
+    $(".content2").text(k);
+  });
+</script>

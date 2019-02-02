@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'posts#new'
+  root 'posts#home'
   resources :posts
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
