@@ -1,22 +1,24 @@
-
 <h1 class="first">縦文字変換</h1>
 
-<div class="row">
-  <div class="col-md-12">
-      <textarea class="content1"></textarea><br>
 
-      <input value="変換する"class="btn btn-primary click">
+<textarea class="content1"></textarea><br>
+<button class="btn btn-primary click">１</button>
 
-  </div>
-</div>
   
-  <br>
-<div class="row">
-  <div class="col-md-12">
-    <textarea class="content2"></textarea>
-    
-  </div>
+<br>
+
+<textarea id="txtbox" style="width:600px; height: 50px"; class="content2"></textarea><br />
+<button class="btn btn-primary" onClick="quotes()">２</button>
+<hr />
+<div class="tweet_button">
+  <a href="https://twitter.com/share" class="twitter-share-button tweet_button"{count} data-url="goo.gl/udj2qQ" data-text="blabla" data-size="large">ツイート</a>
 </div>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+<br>
+
+
+
+
 
 <script>
   var toFullWidth = function(value) {
@@ -57,3 +59,23 @@
     $(".content2").text(k);
   });
 </script>
+
+<script>
+  
+function quotes() {
+  var txt = document.querySelector('.content2').value;
+  var tbutton = document.querySelector('.twitter-share-button');
+  
+  tbutton.parentNode.removeChild(tbutton);
+  
+  var newA = document.createElement('a');
+  newA.setAttribute('href', 'https://twitter.com/share');
+  newA.setAttribute('class', 'twitter-share-button');
+  newA.setAttribute('data-url', 'goo.gl/udj2qQ');
+  newA.setAttribute('data-text', txt);
+  newA.setAttribute('data-size', 'large');
+  document.body.appendChild(newA);
+  twttr.widgets.load();
+}
+</script>
+
