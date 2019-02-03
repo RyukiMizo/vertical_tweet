@@ -1,0 +1,24 @@
+
+<script>
+  
+function quotes() {
+  var txt = document.querySelector('textarea').value;
+  var tbutton = document.querySelector('.twitter-share-button');
+  
+  tbutton.parentNode.removeChild(tbutton);
+  
+  var newA = document.createElement('a');
+  newA.setAttribute('href', 'https://twitter.com/share');
+  newA.setAttribute('class', 'twitter-share-button');
+  newA.setAttribute('data-url', 'goo.gl/udj2qQ');
+  newA.setAttribute('data-text', txt);
+  document.body.appendChild(newA);
+  twttr.widgets.load();
+}
+</script>
+
+<textarea id="txtbox" style="width:600px; height: 50px; class="content2"></textarea><br />
+<button onClick="quotes()">Click Here</button>
+
+<a  href="https://twitter.com/share" class="twitter-share-button"{count} data-url="goo.gl/udj2qQ" data-text="blabla">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
