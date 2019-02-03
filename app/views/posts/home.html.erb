@@ -55,7 +55,8 @@
       e += "\n"
     }
     var k = toFullWidth(e)+"\n"+"https://vertical-tweet.herokuapp.com/"+"\n"+"#縦文字変換";
-    k = k.replace("ー", "│").replace("）", "︶").replace("（", "⌒")
+    k = k.replace(/ー/g, "│").replace(/）/g, "︶").replace(/（/g, "⌒")
+
     $(".content2").text(k);
   });
 </script>
