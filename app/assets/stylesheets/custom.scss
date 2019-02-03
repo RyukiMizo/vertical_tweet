@@ -50,14 +50,17 @@ h1.first {
 }
 
 textarea {
-  min-height: 300px;
-  max-height: 300px;
-  min-width: 500px;
-  max-width: 500px;
+  min-height: 180px;
+  max-height: 180px;
+  min-width: 340px;
+  max-width: 340px;
 }
 
 body {
   margin-left: 20px;
 }
-
+.btn-primary {
+  padding: 5px 20px 5px 20px;
+  margin-bottom: 20px;
+}
 

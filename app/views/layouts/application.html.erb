@@ -14,14 +14,13 @@
   <body>
     <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
-        <%= link_to "縦文字変換", root_path, id: "logo" %>
-        <nav>
-          <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to "ホーム",   root_path %></li>
-            <li><%= link_to "縦文字変換について",   '#' %></li>
-            
-          </ul>
-        </nav>
+        <div class="row">
+          <div class="col-sm-4">
+            <%= link_to "縦文字変換", root_path, id: "logo" %>
+          </div>
+            <nav>
+            </nav>
+        </div>
       </div>
     </header>
     <div class="contain">
