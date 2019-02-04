@@ -3,6 +3,7 @@
   <head>
     <title>縦文字変換</title>
     <%= csrf_meta_tags %>
+    <meta charset="UTF-8">
     <%= stylesheet_link_tag    'application', media: 'all',
                                'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application',
@@ -12,21 +13,23 @@
 
   </head>
   <body>
-    <header class="navbar navbar-fixed-top navbar-inverse">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-4">
-            <%= link_to "縦文字変換", root_path, id: "logo" %>
+    <div class="container">
+      <header class="navbar navbar-fixed-top navbar-inverse">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-4">
+              <%= link_to "縦文字変換", root_path, id: "logo" %>
+            </div>
+              <nav>
+              </nav>
           </div>
-            <nav>
-            </nav>
         </div>
+      </header>
+      <div class="contain">
+        <%= yield %>
       </div>
-    </header>
-    <div class="contain">
-      <%= yield %>
+      <%= render 'layouts/footer' %>
     </div>
-    <%= render 'layouts/footer' %>
   </body>
   
 </html>
