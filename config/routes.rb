@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'users/new'
+
+  get 'user/new'
+
   root 'posts#home'
   resources :posts
 
