@@ -2,60 +2,44 @@
   <div class="container">
     <nav class="nav-head">
     <%= link_to root_path do %>
-    <div class="logo3">
-      <%= image_tag("logo3.png", size: '180x32') %>
-    </div>
+      <%= image_tag("logo3.png", size: '180x32',class: "logo") %>
     <% end %>
     
-
-      
       <ul class="nav navbar-nav navbar-right">
         
         <li class="home-home">
-        <%= link_to root_path do %>
-        <i class="fas fa-home fa-2x"></i>
-        <% end %></li>
+          <%= link_to "ホーム",root_path %>
+        </li>
 
-        <li class="home-use"><%= link_to root_path do %>
-        <i class="far fa-question-circle fa-2x"></i>
-        <% end %></li>
+        <li class="home-use">
+          <%= link_to "ヘルプ", help_path %>
+        </li>
+        
         <li class="home-index"><%= link_to root_path do %>
-        <i class="fas fa-search fa-2x"></i>
+        作品検索 <i class="fas fa-search fa-x"></i>
         <% end %></li>
-
-       
-          
-
-
-<li class="dropdown dropdown-user">
-  <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-      <i class="fa fa-user fa-fw fa-2x"></i>
-  </a>
-  <ul class="dropdown-menu">
-      <li class="drop-user">
-
-    　<i class="fa fa-user fa-2x"></i> プロフィール
-    　
-    　</li>
-    　<li class="drop-user">
-
-    　<i class="fas fa-cog fa-2x"></i> 設定
-
-    　</li>
-    　<li class="drop-user">
-    　
-    　<i class="fas fa-sign-out-alt fa-2x"></i> ログアウト
-    　
-    　</li>
-  </ul>
-</li>
-
-
         
-          <li class="home-login">
-          <i class="fas fa-sign-in-alt fa-2x"></i>ログイン
-          </li>
-        
+        <% if logged_in? %>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            アカウント <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <%= link_to "プロフィール", current_user %>
+            </li>
+            <li>
+              <%= link_to "設定", "#" %>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <%= link_to "ログアウト", logout_path, method: :delete %>
+            </li>
+        <% else %>
+          <li class="login"><%= link_to login_path do %>
+          <i class="fas fa-sign-in-alt fa-x"></i>ログイン
+          <% end %></li>
+        <% end %>
       </ul>
     </nav>
   </div>

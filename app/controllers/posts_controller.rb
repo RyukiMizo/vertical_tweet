@@ -7,4 +7,5 @@ class PostsController < ApplicationController
   def home
     @post = Post.new
   end
+  
 end

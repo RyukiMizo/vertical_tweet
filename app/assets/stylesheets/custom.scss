@@ -41,10 +41,19 @@ p {
   font-weight: bold;
 }
 
-#logo:hover {
-  color: #fff;
-  text-decoration: none;
+.navbar-inverse{
+  border-color: #BECCD4;
 }
+
+.logo{
+  margin-top:10px;
+}
+.navbar-inverse .navbar-nav > .open > a, 
+.navbar-inverse .navbar-nav > .open > a:hover, 
+.navbar-inverse .navbar-nav > .open > a:focus{
+    background-color: #BECCD4;
+}
+
 
 h1.first {
   padding-top: 50px;
