@@ -13,7 +13,8 @@ FactoryBot.define do
       email "aa@aa"
     end
     
-    trait :five_poemer do
+    trait :normal_email do
+      email "aa@aa.aa"
     end
     
   end

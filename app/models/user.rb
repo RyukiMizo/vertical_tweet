@@ -8,6 +8,7 @@ class User < ApplicationRecord
   uniqueness: {case_sensitive: false}
   
   has_many :posts, dependent: :destroy
+  has_many :likes, dependent: :destroy
   
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :

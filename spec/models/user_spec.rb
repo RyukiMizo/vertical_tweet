@@ -28,10 +28,10 @@ RSpec.describe User, type: :model do
     context "email validation" do
   
       it "is invalid with a duplicated email and no distinction between upcase and downcase." do
-        FactoryBot.create(:user)
-        user = FactoryBot.build(:user, email: "AA@aa.aa")
+        FactoryBot.create(:user, :normal_email)
+        user = FactoryBot.build(:user,email: "AA@aa.aa")
         user.valid?
-        expect(user.errors[:email]).to include("has already been taken")
+        expect(user.errors[:email]).to be_present
       end
       
       it "is invalid without @" do
