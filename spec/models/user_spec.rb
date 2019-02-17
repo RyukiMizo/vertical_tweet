@@ -1,37 +1,46 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  it "has valid factory_bot" do
-    expect(FactoryBot.build(:user)).to be_valid
+  before do
+    @user = FactoryBot.build(:user)
   end
   
-  describe "validation" do
-    context "when form is empty" do
-      it "is invalid without name." do
-        user = FactoryBot.build(:user, name: nil)
-        user.valid?
-        expect(user.errors[:name]).to include("can't be blank")
-      end
-      it "is invalid without email." do
-        user = FactoryBot.build(:user, email: nil)
-        user.valid?
-        expect(user.errors[:email]).to include("can't be blank")
+  it "FactoryBotが機能している" do
+    expect(@user).to be_valid
+  end
+  
+  describe "検証" do
+    context "フォームが空の時" do
+      it "名前が無くてはいけない" do
+        @user.name = " "
+        expect(@user).to_not be_valid
       end
       
-      it "is invalid without password."  do
-        user = FactoryBot.build(:user, password: nil)
-        user.valid?
-        expect(user.errors[:password]).to include("can't be blank")
+      it "emailが無くてはいけない" do
+        @user.email = " "
+        expect(@user).to_not be_valid
+      end
+      
+      it "パスワードが無くてはいけない" do
+        @user.password = @user.password_confirmation = "aaaaaa"
+        expect(@user).to be_valid
+        
+        @user.password = @user.password_confirmation = " " * 6
+        expect(@user).to_not be_valid
       end
     end
     
-    context "email validation" do
+    context "emailの検証" do
   
-      it "is invalid with a duplicated email and no distinction between upcase and downcase." do
-        FactoryBot.create(:user, :normal_email)
-        user = FactoryBot.build(:user,email: "AA@aa.aa")
-        user.valid?
-        expect(user.errors[:email]).to be_present
+      it "重複してはいけない" do
+        duplicate_user = @user.dup
+        duplicate_user.email = " "
+      end
+      
+      it "小文字でデータベースに保存されているか" do
+        @user.email = "AAAA@Aaa.aAA"
+        @user.save!
+        expect(@user.reload.email).to eq "aaaa@aaa.aaa"
       end
       
       it "is invalid without @" do
@@ -44,10 +53,17 @@ RSpec.describe User, type: :model do
       user.valid?
       expect(user.errors[:email]).to be_present
       end
+      
     end
     
-    context "password validation" do
-      
+    context "パスワードの検証" do
+      it "パスワードが6文字以上である" do
+        @user.password = @user.password_confirmation = "a" * 5
+        expect(@user).to_not be_valid
+        
+        @user.password = @user.password_confirmation = "a" * 6
+        expect(@user).to be_valid
+      end
     end
   end
   

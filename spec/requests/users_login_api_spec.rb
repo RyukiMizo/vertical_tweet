@@ -18,4 +18,21 @@ RSpec.describe "UsersLoginApi", type: :request do
       end
     end
   end
+  
+  describe "<session#destroy>" do
+    before do
+      @user = FactoryBot.create(:user)
+    end
+    
+    it "ログアウトできているか" do
+      get login_path
+      post login_path params: {session: {email: @user.email, name: @user.name}}
+      expect(response).to have_http_status "200"
+      delete logout_path
+      #follow_redirect!
+      expect(response).to redirect_to(root_path)
+    end
+  end
+      
+      
 end
