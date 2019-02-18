@@ -51,7 +51,7 @@ RSpec.describe User, type: :model do
       it "is invalid without ." do
         user = FactoryBot.build(:user, :email_without_dot)#trait
       user.valid?
-      expect(user.errors[:email]).to be_present
+      expect(user.errors[:email]).present?
       end
       
     end
