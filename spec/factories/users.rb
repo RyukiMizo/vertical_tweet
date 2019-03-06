@@ -5,6 +5,7 @@ FactoryBot.define do
     password "aaaaaa"
     password_confirmation "aaaaaa"
     
+    
     factory :email_without_atmark do
       email "aa.aa"
     end
@@ -17,5 +18,6 @@ FactoryBot.define do
       email "aa@aa.aa"
     end
     
+    #activated true
   end
 end

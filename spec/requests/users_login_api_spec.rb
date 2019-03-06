@@ -2,15 +2,15 @@ require 'rails_helper'
 
 RSpec.describe "UsersLoginApi", type: :request do
   it "sessions/newにアクセスできること" do
-    get login_path
+    get '/login'
     expect(response).to have_http_status(:success)
   end
   
   describe "<sessino#new>" do
     context "ログインに失敗したとき" do
       it "flashメッセージをキャッチする" do
-        get login_path
-        post login_path, params: {session: {email: "", password: ""}}
+        get '/login'
+        post '/login', params: {session: {email: "", password: ""}}
         expect(response).to have_http_status(:success)
         expect(flash[:danger]).to be_truthy
         get root_path
@@ -25,8 +25,8 @@ RSpec.describe "UsersLoginApi", type: :request do
     end
     
     it "ログアウトできているか" do
-      get login_path
-      post login_path params: {session: {email: @user.email, name: @user.name}}
+      get '/login'
+      post '/login', params: {session: {email: @user.email, name: @user.name}}
       expect(response).to have_http_status "200"
       delete logout_path
       #follow_redirect!
