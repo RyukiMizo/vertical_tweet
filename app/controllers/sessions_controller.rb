@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
         forget(user)
       end
       
-      redirect_to user
+      redirect_back_or user
       flash[:sucess] = "ログインに成功しました！"
     else
       flash.now[:danger] = "メールアドレスかパスワードが正しくありません"

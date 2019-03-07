@@ -42,6 +42,10 @@ class UsersController < ApplicationController
   end
   
   def destroy
+    User.find(params[:id]).destroy
+    flash[:success] = "ユーザーを削除しました"
+    redirect_to users_url
+  end
     
   end
   
@@ -54,6 +58,7 @@ class UsersController < ApplicationController
     
   def logged_in_user
     unless logged_in?
+      store_location
       flash[:danger] = "ログインが必要です"
       redirect_to login_url
     end

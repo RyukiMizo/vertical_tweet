@@ -71,6 +71,14 @@ RSpec.describe "編集,削除", type: :request do
     end
   end
   
+  describe "フレンドリーフォワーディング" do
+    it "編集ページ=>ログイン" do
+      get edit_user_path(@user)
+      log_in_as(@user)
+      expect(response).to redirect_to(edit_user_path(@user))
+    end
+  end
+  
   describe "削除について" do
     context "正しいユーザーの時" do
       it "一人減る" do
