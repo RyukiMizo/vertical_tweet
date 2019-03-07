@@ -1,1 +1,4 @@
 <h1><%= @user.name %></h1>
+<% if current_user.admin && current_user == @user %>
+  <%= link_to "削除", user_path(@user), method: :delete, data: {confirm: "本当に削除しますか？"} %>
+<% end %>

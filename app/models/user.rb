@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
   
+  mount_uploader :image, ImageUploader
   #nvm use --delete-prefix v8.3.0
   #npm install -g heroku-cli
   

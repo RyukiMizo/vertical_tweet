@@ -27,7 +27,6 @@ RSpec.describe "編集,削除", type: :request do
     context "別のユーザーのページに行く時" do
       it "ホームに行く" do
         other_user = FactoryBot.create(:user)
-        post login_path, params: {session: {email: @user.email, password: @user.password}}
         log_in_as(other_user)
         get edit_user_path(@user)
         #get :edit, params: {id: @user.id}
@@ -44,9 +43,9 @@ RSpec.describe "編集,削除", type: :request do
       it "アップデートする" do
         user_params = FactoryBot.attributes_for(:user, name: "bbb")
         log_in_as(@user)
-        patch user_path(@user), params: {id: @user.id, user: user_params}
+        patch user_path(@user), params: {user: user_params}
         #id => /user/:id,  user => update情報
-        expect(@user.reload.name).eq "bbb"
+        expect(@user.reload.name).to eq "bbb"
       end
     end
     
@@ -56,7 +55,7 @@ RSpec.describe "編集,削除", type: :request do
         other_user = FactoryBot.create(:user)
 
         log_in_as(other_user)
-        patch user_path(@user), params: {id: @user.id, user: user_params}
+        patch user_path(@user), params: {user: user_params}
         expect(response). to redirect_to root_url
         expect(flash[:danger]).to be_truthy
       end
@@ -65,7 +64,7 @@ RSpec.describe "編集,削除", type: :request do
     context "ログインしていないユーザーの時" do
       it "アップデートしない" do
         user_params = FactoryBot.attributes_for(:user, name: "bbb")
-        patch user_path(@user), params: {id: @user.id, user: user_params}
+        patch user_path(@user), params: {user: user_params}
         expect(response). to redirect_to login_path
         expect(flash[:danger]).to be_truthy
       end
@@ -104,6 +103,12 @@ RSpec.describe "編集,削除", type: :request do
         expect(flash[:danger]).to be_truthy
       end
     end
-    
+  end
+  
+  it "adminの編集を許可しない" do
+    user_params = FactoryBot.attributes_for(:user, admin: true)
+    log_in_as(@user)
+    patch user_path(@user), params: {user: user_params}
+    expect(@user.admin).to be_falsey
   end
 end

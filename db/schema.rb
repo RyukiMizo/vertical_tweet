@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190212092040) do
+ActiveRecord::Schema.define(version: 20190307004354) do
 
   create_table "likes", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(version: 20190212092040) do
     t.string "password"
     t.string "password_confirmation"
     t.string "remember_digest"
+    t.boolean "admin", default: false
+    t.string "image"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
