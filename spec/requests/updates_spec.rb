@@ -87,10 +87,10 @@ RSpec.describe "編集,削除", type: :request do
           delete user_path(@user), params: {id: @user.id}
         }.to change(User, :count).by(-1)
       end
-      it "rootに飛び、成功画面が表示" do
+      it "indexに飛び、成功画面が表示" do
         log_in_as(@user)
         delete user_path(@user), params: {id: @user.id, }
-        expect(response).to redirect_to root_url
+        expect(response).to redirect_to users_url
         expect(flash[:success]).to be_truthy
       end
     end

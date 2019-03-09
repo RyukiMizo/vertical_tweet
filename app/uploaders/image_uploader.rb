@@ -6,7 +6,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Choose what kind of storage to use for this uploader:
   storage :file
   # storage :fog
-　def size_range
+  def size_range
 　  1..10.megabytes
 　end
 　
@@ -50,4 +50,5 @@ class ImageUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
+   end
 end
