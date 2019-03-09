@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
         
         redirect_back_or user
         flash[:sucess] = "ログインに成功しました！"
-      else
+      else#有効化していない場合
         flash[:warning] = "アカウント認証のメールをご確認ください。"
         redirect_to root_url
       end
