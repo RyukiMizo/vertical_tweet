@@ -50,6 +50,7 @@ Rails.application.configure do
     :password       => ENV['SENDGRID_PASSWORD'],
     :domain         => 'heroku.com',
     :enable_starttls_auto => true
+  }
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil
   # config.action_cable.url = 'wss://example.com/cable'
