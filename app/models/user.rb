@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  attr_accessor :remember_token, :activation_token#modelの外
+  attr_accessor :remember_token, :activation_token, :reset_token#modelの外
   
   has_secure_password
   before_save {self.email = email.downcase}
@@ -10,7 +10,7 @@ class User < ApplicationRecord
   validates :email, presence: true, length: {maximum: 255},
   format: {with: VALID_EMAIL_REGEX},
   uniqueness: {case_sensitive: false}
-  validates :password, presence: true, length: {minimum: 6}
+  validates :password, presence: true, length: {minimum: 6}, allow_nil: true
   validates :password_confirmation, presence: true, length: {minimum: 6}
   
   has_many :posts, dependent: :destroy

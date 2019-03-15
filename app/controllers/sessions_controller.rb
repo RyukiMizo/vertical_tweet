@@ -4,8 +4,9 @@ class SessionsController < ApplicationController
   end
   
   def create
-    user = User.find_by(email: params[:session][:email].downcase)
-    if user && user.authenticate(params[:session][:password])#formの内容が正しい場合
+    
+    user = User.find_by(email_params)
+    if user && user.authenticate(password_params[:password])#formの内容が正しい場合
       if user.activated?#メールで有効かしているか否か
         remember(user)
         log_in(user)
@@ -31,5 +32,15 @@ class SessionsController < ApplicationController
   def destroy
     log_out if logged_in?
     redirect_to root_url
+  end
+  
+private
+  
+  def email_params
+    params.require(:session).permit(:email)
+  end
+  
+  def password_params
+    params.require(:session).permit(:password)
   end
 end

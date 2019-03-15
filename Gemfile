@@ -53,6 +53,7 @@ group :development, :test do
   gem "factory_bot_rails", "~> 4.10.0"
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+  gem 'rails-controller-testing'
   
 end
 group :development do
