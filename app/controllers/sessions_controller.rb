@@ -44,3 +44,5 @@ private
     params.require(:session).permit(:password)
   end
 end
+
+

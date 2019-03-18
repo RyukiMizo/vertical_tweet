@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-  attr_accessor :remember_token, :activation_token, :reset_token#modelの外
+  attr_accessor :remember_token, :activation_token, :reset_token #modelの外
+
   
   has_secure_password
   before_save {self.email = email.downcase}
