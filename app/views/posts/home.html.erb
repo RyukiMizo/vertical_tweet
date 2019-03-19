@@ -5,13 +5,21 @@
 <button class="btn btn-primary click">縦に変換</button>
 
 <br>
-<%= form_for(@post) do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
+<% if logged_in? %>
+
+  <%= form_for(@post) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    
+    <%= f.text_area :content, placeholder: "ここに縦文字の俳句が表示されます。", :id => "txtbox",
+    :size => "600x50", :class => "content2" %><br />
+    <button id="tweet"class="btn btn-primary"><i class="fab fa-twitter"></i> ツイート</button>
+    <%= f.submit "投稿する", class: "btn btn-primary" %>
+  <% end %>
   
-  <%= f.text_area :content, placeholder: "ここに縦文字の俳句が表示されます。", :id => "txtbox",
-  :size => "600x50", :class => "content2" %><br />
+<% else %>
+  <textarea placeholder = "ここに縦文字の俳句が表示されます。", id = "txtbox",
+    size = "600x50", class = "content2"></textarea><br />
   <button id="tweet"class="btn btn-primary"><i class="fab fa-twitter"></i> ツイート</button>
-  <%= f.submit "投稿する", class: "btn btn-primary" %>
 <% end %>
 
 

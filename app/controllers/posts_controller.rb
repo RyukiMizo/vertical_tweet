@@ -3,9 +3,9 @@ class PostsController < ApplicationController
   #before_action :twitter_client, only: [:create]
   #attr_accessor :cont, :first, :k
   #include PostsHelper
-  #before_action :twitter_client, only: [:create]
-  before_action :please_log_in, only: :create
-  before_action :logged_in_user, only: :destroy
+  #before_action :twitter_client, only: :create
+  #before_action :please_log_in, only: :create
+  before_action :logged_in_user, only: [:create, :destroy]
   before_action :correct_user, only: :destroy
   
   def home
