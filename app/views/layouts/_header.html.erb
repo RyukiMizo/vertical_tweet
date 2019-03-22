@@ -6,6 +6,18 @@
     <% end %>
     
       <ul class="nav navbar-nav navbar-right">
+        <li>
+          
+        </li>
+
+        <li class ="search">
+          <div id="search-box">
+            <%= form_tag(search_posts_path, method: :get) do %>
+              <%= text_field_tag :search, "", id: "inc_search", class: "search__query", name: "keyword", placeholder: "俳句を検索" %>
+              <button class="searchsubmit" title="検索" type="submit">検索</button>
+            <% end %>
+          </div>
+        </li>
         
         <li class="home-home">
           <%= link_to "ホーム",root_path %>
@@ -47,3 +59,50 @@
     margin-left: 20px;
   }
 </style>
+
+<style>
+
+.ui-autocomplete {
+    max-height: 100px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 20px;
+}
+#jquery-ui-autocomplete label {
+    float: left;
+    margin-right: 0.5em;
+    color: black;
+    font-size: 15px;
+}
+
+</style>
+
+<script>
+  /* global $ */
+$(document).on('turbolinks:load', function(){
+    var preFunc = null,
+        preInput = '',
+        input = '',
+        ajaxSearch = function(){
+          $.ajax({
+          url: '/posts/search',
+          type: 'GET',
+          data: ('keyword=' + input),
+          processData: false,
+          contentType: false,
+          dataType: 'json'
+          });
+        };
+    $('#form').on('keyup', function() {
+    .done(function(data){ //データを受け取ることに成功したら、dataを引数に取って以下のことする(dataには@postsが入っている状態)
+
+      
+      $(data).each(function(i, post){ //dataをpostという変数に代入して、以下のことを繰り返し行う(単純なeach文)
+        wordlist.append(post.content)}); //resultというidの要素に対して、<li>post.content</li>を追加する。
+
+      $("#form").autocomplete({source: wordlist});
+      
+    });
+  });
+});
+</script>

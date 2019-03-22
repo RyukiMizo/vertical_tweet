@@ -8,8 +8,7 @@
     <%= stylesheet_link_tag    'application', media: 'all',
                                'data-turbolinks-track': 'reload' %>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-    <%= javascript_include_tag 'application',
-                               'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 　　<%= render 'layouts/shim' %>
   </head>
 
@@ -25,3 +24,9 @@
     </div>
   </body>
 </html>
+
+<script>
+  $(function(){
+    $(".alert").fadeOut(5000);
+  });
+</script>

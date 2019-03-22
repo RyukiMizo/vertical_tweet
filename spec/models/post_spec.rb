@@ -4,7 +4,7 @@ RSpec.describe Post, type: :model do
   before do
     @user = FactoryBot.create(:user)
   end
-  describe "postのvalidationについて" do
+  describe "postのvalidation" do
     context "contentが空の時" do
       it "正当でない" do
         post = @user.posts.new(content: nil)
@@ -27,7 +27,7 @@ RSpec.describe Post, type: :model do
     end
   end
   
-  describe "userとの関連付けにおいて" do
+  describe "userとの関連付け" do
     it "紐づいて削除される" do
       @user.posts.create(content: "one")
       expect{
@@ -36,7 +36,7 @@ RSpec.describe Post, type: :model do
     end
   end
     
-  describe "search message" do
+  describe "検索メッセージ" do
     before do
       @user = FactoryBot.create(:user)
       @post1 = @user.posts.create(content: "Hello, World!")
@@ -44,15 +44,15 @@ RSpec.describe Post, type: :model do
       @post3 = @user.posts.create(content: "Hey, You!")
     end
       
-    context "when term is found" do
-      it "retuens posts that matche the search term" do
+    context "文字列が見つかった場合" do
+      it "一致した投稿を返す" do
         expect(Post.search("hello")).to include(@post1, @post2)
         expect(Post.search("hello")).to_not include(@post3)
       end
     end
     
-    context "when term is not found" do
-      it "retuens empty when no results are found" do
+    context "文字列が見つからない場合" do
+      it "空を返す" do
         expect(Post.search("I")).to be_empty
       end
     end

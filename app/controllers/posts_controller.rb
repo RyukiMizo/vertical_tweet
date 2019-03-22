@@ -13,7 +13,7 @@ class PostsController < ApplicationController
   end
   
   def index
-    @posts = Post.all
+    @posts = Post.all.paginate(page: params[:page])
   end
   
   def show
@@ -39,6 +39,14 @@ class PostsController < ApplicationController
     @post.destroy
     flash[:success] = "削除に成功しました！"
     redirect_to current_user
+  end
+  
+  def search
+    @posts = Post.where('content LIKE(?)', "%#{params[:keyword]}%")
+    respond_to do |format|
+      format.html {redirect_to posts_path(@posts.paginate(page: params[:page]))}
+      format.json { render json: @posts.order('content ASC').limit(10) }
+    end
   end
   
 private
