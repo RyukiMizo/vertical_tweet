@@ -5,5 +5,5 @@ class Post < ApplicationRecord
   has_many :likes, dependent: :destroy
   
   validates :user_id, presence: true
-  validates :content, presence: true
+  validates :content, presence: true, length: {in: 10..22}, uniqueness: true
 end

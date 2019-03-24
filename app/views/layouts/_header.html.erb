@@ -6,17 +6,21 @@
     <% end %>
     
       <ul class="nav navbar-nav navbar-right">
-        <li>
-          
-        </li>
 
         <li class ="search">
           <div id="search-box">
-            <%= form_tag(search_posts_path, method: :get) do %>
-              <%= text_field_tag :search, "", id: "inc_search", class: "search__query", name: "keyword", placeholder: "俳句を検索" %>
-              <button class="searchsubmit" title="検索" type="submit">検索</button>
-            <% end %>
+            <%= form_tag(search_posts_path, method: :get, id: "form2",
+            :data => {:toggle=>"popover", :content => ""},) do %>
+              <%= text_field_tag :search, "", id: "form1", class: "search__query", 
+              name: "keyword", placeholder: "俳句を検索",autocomplete: "off" %>
+              <div id="search_result">
+              </div>
           </div>
+        </li>
+
+        <li class="submit1">
+              <%= button_tag '検索', class: 'btn-gradient-3d-orange' %>
+            <% end %>
         </li>
         
         <li class="home-home">
@@ -26,10 +30,6 @@
         <li class="home-use">
           <%= link_to "ヘルプ", help_path %>
         </li>
-        
-        <li class="home-index"><%= link_to root_path do %>
-        作品検索 <i class="fas fa-search fa-x"></i>
-        <% end %></li>
         
         <% if logged_in? %>
         <li class="dropdown">
@@ -79,30 +79,39 @@
 
 <script>
   /* global $ */
-$(document).on('turbolinks:load', function(){
-    var preFunc = null,
-        preInput = '',
-        input = '',
-        ajaxSearch = function(){
-          $.ajax({
-          url: '/posts/search',
-          type: 'GET',
-          data: ('keyword=' + input),
-          processData: false,
-          contentType: false,
-          dataType: 'json'
-          });
-        };
-    $('#form').on('keyup', function() {
-    .done(function(data){ //データを受け取ることに成功したら、dataを引数に取って以下のことする(dataには@postsが入っている状態)
-
-      
-      $(data).each(function(i, post){ //dataをpostという変数に代入して、以下のことを繰り返し行う(単純なeach文)
-        wordlist.append(post.content)}); //resultというidの要素に対して、<li>post.content</li>を追加する。
-
-      $("#form").autocomplete({source: wordlist});
-      
+$(document).ready(function(){
+  var
+  preFunc = null,
+  preInput = '',
+  input = '',
+  ajaxSearch = function(input) {
+    $.ajax({
+      url: "/posts/search_js",
+      type: "GET",
+      data: ("keyword=" + input)
     });
+  };
+  $('#form1').on('keyup', function() {
+    input = $.trim($(this).val());
+    if(preInput !== input){
+      clearTimeout(preFunc);
+      preFunc = setTimeout(ajaxSearch(input), 500);
+    }
+    
+    var result = $("#search_result").html();
+      $("#form2").popover({
+        content: $("#search_result"),
+        placement: "bottom",
+        html: true,
+        trigger: "focus"
+      });
+      
+    if(input == ""){
+      $("#form2").popover("hide");
+    }else{
+      $("#form2").popover("show");
+    }
+    preInput = input;
   });
 });
 </script>

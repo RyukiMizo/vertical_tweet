@@ -1,10 +1,5 @@
 class PostsController < ApplicationController
   require 'nkf'
-  #before_action :twitter_client, only: [:create]
-  #attr_accessor :cont, :first, :k
-  #include PostsHelper
-  #before_action :twitter_client, only: :create
-  #before_action :please_log_in, only: :create
   before_action :logged_in_user, only: [:create, :destroy]
   before_action :correct_user, only: :destroy
   
@@ -22,10 +17,7 @@ class PostsController < ApplicationController
   
   def create
     @post = current_user.posts.build(post_params)
-    content = @post.content
-    content = content.sub("https://vertical-tweet.herokuapp.com/", "").sub("#縦文字変換", "")
-    content = NKF.nkf("-Xw",content)
-    @post.content = content
+    @post.content = NKF.nkf("-Xw",@post.content)#大文字に変換
     if @post.save
       flash[:success] = "投稿に成功しました！"
       redirect_to post_path(@post)
@@ -42,11 +34,15 @@ class PostsController < ApplicationController
   end
   
   def search
-    @posts = Post.where('content LIKE(?)', "%#{params[:keyword]}%")
-    respond_to do |format|
-      format.html {redirect_to posts_path(@posts.paginate(page: params[:page]))}
-      format.json { render json: @posts.order('content ASC').limit(10) }
-    end
+    redirect_to search_index_post_path(search_params[:keyword])
+  end
+  
+  def search_js
+    @posts2 = Post.where('content LIKE(?)', "%#{search_params[:keyword]}%").order('content ASC').limit(6)
+  end
+  
+  def search_index
+    @posts1 = Post.where('content LIKE(?)', "%#{params[:id]}%").order('content ASC').limit(10).paginate(page: params[:page])
   end
   
 private
@@ -54,6 +50,11 @@ private
   def post_params
     params.require(:post).permit(:content)
   end
+  
+  def search_params
+    params.permit(:keyword)
+  end
+  
   
   def please_log_in
     unless logged_in?

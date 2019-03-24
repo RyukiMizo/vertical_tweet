@@ -116,7 +116,128 @@ textarea {
   margin-left: 0;
 }
 
-#form {
-  margin-top: 14px;
+#search_result{
+  /*
+  position: absolute;
+  top: 47px;
+  */
+}
+
+#windows{
+  /*
+  background-color: white;
+  width: 320px;
+  border: solid 1px #000000;
+  height: 26px;
+  */
+  }
+
+.window{
+  color: black;
+  text-align: center;
+  /*
+  display: block;
+  width: 100%;
+  */
+  padding: 5px;
+  &:hover{
+    background-color: #999999;
+    color: black;
+    border: 0;
+  }
+}
+
+
+.item p{
+    margin: 0px;
+}
+
+.isEven{
+    background-color: #dddddd;
+}
+
+/*フォーム全体*/
+
+/*検索ボックス*/
+#form1{
+outline: 0;/*クリック時の青い枠線消す*/	
+height: 50px;/*検索ボックスの高さ*/	
+padding: 4px 80px 3px 3px;/*テキスト位置調整*/	 
+border-radius: 2px 0 0 2px;/*検索ボックスの角を丸める*/		
+background:#eee;/*検索ボックスの背景カラー*/	
+display: block;
+margin: 14px 0 0 0;
+
+position: relative;
+
+}
+/*検索ボタン*/
+.searchsubmit{
+width: 50px;/*検索ボタンの横幅*/ 
+height: 30px;/*検索ボタンの縦幅*/ 
+display: block;
+border-radius: 0 2px 2px 0;/*検索ボタンの角を丸める*/ 
+background: #7fbfff;/*検索ボタンの背景カラー*/ 
+border: none;/*検索ボタンの枠線を消す*/ 
+color: #fff;/*検索ボタンのテキストカラー*/ 
+font-weight: bold;/*検索ボタンのテキスト太字*/ 
+font-size: 16px;/*検索ボタンのフォントサイズ*/
+margin: 15px 15px 15px 3px;
+}
+
+
+/*検索ボタンマウスオーバー時*/
+.searchsubmit:hover{
+color: #666;/*検索ボタンマウスオーバー時のフォントカラー*/ 
+}
+
+.popover {
+  border-radius: 0;
+  width: 400px;
+  
+  .arrow{
+    display: none;
+  }
+}
+.popover-body {
+  background: #fff;
+  padding: 0;
+  
+}
+.btn-gradient-3d-orange {
+  display: inline-block;
+  padding: 3px 6px 3px 6px;
+  margin-top: 13px;
+  margin-left: 5px;
+  text-decoration: none;
   border-radius: 4px;
+  color: #ffffff;
+  background-image: linear-gradient(45deg, #FFC107 0%, #ff8b5f 100%);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+  border-bottom: solid 3px #c58668;
+}
+
+.btn-gradient-3d-orange:active {
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
+  border-bottom: none;
+}
+.btn-gradient-3d{
+  padding: 10px 16px 10px 16px;
+  display: inline-block;
+
+  text-decoration: none;
+  border-radius: 4px;
+  color: #ffffff;
+  background-image: linear-gradient(45deg, #FFC107 0%, #ff8b5f 100%);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+  border-bottom: solid 3px #c58668;
+  cursor : pointer;
+}
+.btn-gradient-3d:active {
+-webkit-transform: translateY(4px);
+transform: translateY(4px);
+box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
+border-bottom: none;
 }

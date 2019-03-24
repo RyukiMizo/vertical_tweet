@@ -56,4 +56,5 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :test
   host = '0d15c19ee2db4dbdb6cfb6c206608a54.vfs.cloud9.us-east-2.amazonaws.com'
   config.action_mailer.default_url_options = { host: host, protocol: 'https' }
+  config.web_console.whitelisted_ips = '0.0.0.0/0'
 end

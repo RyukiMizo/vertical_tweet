@@ -1,0 +1,5 @@
+<% if false %>
+<% flash[:success] = "表示に成功" %>
+<% @posts2 = Post.where('content LIKE(?)', "%#{search_params[:keyword]}%").order('content ASC').limit(10) %>
+<% end %>
+$("#search_result").html("<%= escape_javascript(render :partial =>"shared/search",:collection => @posts2, :as => "post2") %>");

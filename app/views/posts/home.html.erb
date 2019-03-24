@@ -1,11 +1,12 @@
 <h1 class="first">縦文字変換</h1>
 
 <% if logged_in? %>
+<p>※6~18文字以内</p>
   <%= form_for(@post) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
     <%= f.text_area :content, :id => "texta",
         :size => "600x50", :class => "content1" %><br />
-    <div class="btn btn-primary click">縦に変換</div>
+    <div class="btn-gradient-3d click">縦に変換</div>
     <br>
     <textarea id = "txtbox" rows="600" cols="50" class = "content2"></textarea>
     <br />
@@ -16,7 +17,7 @@
 <% else %>
     <textarea rows="600" cols="50" class = "content3" id = "texta1"></textarea>
     <br />
-    <button class="btn btn-primary click1">縦に変換</button>
+    <div class="btn-gradient-3d click1">縦に変換</div>
     <br>
     <textarea rows="600" cols="50" class="content4" id="txtbox1"></textarea><br />
   <button id="tweet1"class="btn btn-primary"><i class="fab fa-twitter"></i> ツイート</button>
@@ -73,7 +74,7 @@
       }
       e += "\n"
     }
-    var k = toFullWidth(e)+"\n"+"https://vertical-tweet.herokuapp.com/"+"\n"+"#縦文字変換";
+    var k = toFullWidth(e)+"\n"+"https://haikubeta.herokuapp.com/"+"\n"+"#縦文字変換";
     k = k.replace(/ー/g, "│").replace(/）/g, "︶").replace(/（/g, "⌒")
 
     $(".content2").text(k);
@@ -132,7 +133,7 @@
       }
       e += "\n"
     }
-    var k = toFullWidth(e)+"\n"+"https://vertical-tweet.herokuapp.com/"+"\n"+"#縦文字変換";
+    var k = toFullWidth(e)+"\n"+"https://haikubeta.herokuapp.com/"+"\n"+"#縦文字変換";
     k = k.replace(/ー/g, "│").replace(/）/g, "︶").replace(/（/g, "⌒")
 
     $(".content4").text(k);
@@ -161,3 +162,4 @@
   var str = "水蛙古\nの飛池\n音びや\n　込　\n　む　";
   $(".content4").text(str);
 </script>
+

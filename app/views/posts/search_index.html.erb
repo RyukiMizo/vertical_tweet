@@ -1,0 +1,7 @@
+<% provide(:title, '検索結果') %>
+<h1>検索結果</h1>
+<%= will_paginate @posts1 %>
+<ul class="posts">
+  <%= render :partial => 'post', :collection => @posts1 %>
+</ul>
+<%= will_paginate @posts1 %>

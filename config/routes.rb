@@ -16,7 +16,10 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   resources :posts, only: [:create, :destroy, :show, :index] do
     collection do
-      get "search"
+      get "search", "search_js"
+    end
+    member do
+      get "search_index"
     end
   end
   
