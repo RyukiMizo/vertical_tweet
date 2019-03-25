@@ -1,4 +1,9 @@
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 768px) {
+  
+  
+  /*    home    */
+  
+  
   #form1{
     width: 250px;
   }
@@ -25,7 +30,7 @@
   .row {
     position: relative;
   }
-  #paper {
+  #paper, #paper1{
     margin: 0;
     position: absolute;
     top: -560px;
@@ -35,5 +40,20 @@
     position: absolute;
     top: -560px;
     left: -3px;
+  }
+  h1.first {
+    padding-top: 110px;
+  }
+  .not-login{
+    padding-top: 50px;
+  }
+  
+  
+  
+  /*  header  */
+  li{
+    a{
+      float: left;
+    }
   }
 }

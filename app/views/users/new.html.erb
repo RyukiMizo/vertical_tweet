@@ -1,24 +1,120 @@
-<% provide(:title, 'Sign up') %>
-<h1>Sign up</h1>
+<% provide(:title, '登録') %>
 
-<div class="row user_row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@user) do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
-      <%= f.label :name, "名前" %>
-      <%= f.text_field :name, class: 'form-control' %>
-
-      <%= f.label :email, "メールアドレス" %>
-      <%= f.email_field :email, class: 'form-control' %>
-
-      <%= f.label :password, "パスワード" %>
-      <%= f.password_field :password, class: 'form-control' %>
-
-      <%= f.label :password_confirmation, "パスワード確認" %>
-      <%= f.password_field :password_confirmation, class: 'form-control' %>
-
-      <%= f.submit "Create my account", class: "btn btn-primary" %>
-    <% end %>
+<div class="submit-form">
+  <div class="left">
+  <%= form_for(@user) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+  
+    <div class="cp_iptxt">
+    	<%= f.text_field :name, placeholder: "お名前" %>
+    	<i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
+    </div>
+    
+    
+    <div class="cp_iptxt">
+    	<%= f.email_field :email,  placeholder: "E-Mail" %>
+    	<i class="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
+    </div>
+    
+    <div class="cp_iptxt">
+    	<%= f.password_field :password,  placeholder: "パスワード(6文字以上)" %>
+    	<i class="fas fa-key fa-lg fa-fw" aria-hidden="true"></i>
+    </div>
+    <div class="cp_iptxt">
+    	<%= f.password_field :password_confirmation,  placeholder: "パスワードの確認" %>
+    	<i class="fas fa-key fa-lg fa-fw" aria-hidden="true"></i>
+    </div>
   </div>
 </div>
+      <%= f.submit "登録", class: "btn-gradient-3d sub-bt" %>
 
+  <% end %>
+
+
+
+<style>
+.submit-form{
+  margin-left: -30px;
+}
+.left{
+  text-align: left;
+}
+.sub-bt{
+  width: 60%;
+}
+ .cp_iptxt {
+	position: relative;
+	width: 60%;
+	margin: 40px 3%;
+}
+.cp_iptxt input[type=text] {
+	font: 15px/24px sans-serif;
+	box-sizing: border-box;
+	width: 100%;
+	margin: 8px 0;
+	padding: 0.3em;
+	transition: 0.3s;
+	border: 1px solid #1b2538;
+	border-radius: 4px;
+	outline: none;
+	
+}
+.cp_iptxt input[type=email] {
+	font: 15px/24px sans-serif;
+	box-sizing: border-box;
+	width: 100%;
+	margin: 8px 0;
+	padding: 0.3em;
+	transition: 0.3s;
+	border: 1px solid #1b2538;
+	border-radius: 4px;
+	outline: none;
+}
+.cp_iptxt input[type=password] {
+	font: 15px/24px sans-serif;
+	box-sizing: border-box;
+	width: 100%;
+	margin: 8px 0;
+	padding: 0.3em;
+	transition: 0.3s;
+	border: 1px solid #1b2538;
+	border-radius: 4px;
+	outline: none;
+}
+.cp_iptxt input[type=text]:focus {
+	border-color: #da3c41;
+}
+.cp_iptxt input[type=email]:focus {
+	border-color: #da3c41;
+}
+.cp_iptxt input[type=password]:focus {
+	border-color: #da3c41;
+}
+.cp_iptxt input[type=text] {
+	padding-left: 40px;
+}
+.cp_iptxt input[type=email] {
+	padding-left: 40px;
+}
+.cp_iptxt input[type=password] {
+	padding-left: 40px;
+}
+.cp_iptxt i {
+	position: absolute;
+	top: 8px;
+	left: 0;
+	padding: 9px 8px;
+	transition: 0.3s;
+	color: #aaaaaa;
+}
+.cp_iptxt input[type=text]:focus + i {
+	color: #da3c41;
+}
+.cp_iptxt input[type=email]:focus + i {
+	color: #da3c41;
+}
+.cp_iptxt input[type=password]:focus + i {
+	color: #da3c41;
+}
+
+</style>

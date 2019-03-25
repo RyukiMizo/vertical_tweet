@@ -20,8 +20,7 @@ class UsersController < ApplicationController
       flash[:info] = "アカウント確認メールを送りました。"
       redirect_to root_url
     else
-      render 'edit'
-      #@userの情報を引き継ぐ
+      render 'new'
     end
   end
   
@@ -30,6 +29,7 @@ class UsersController < ApplicationController
   end
   
   def index
+    @users = User.all
   end
   
   def update

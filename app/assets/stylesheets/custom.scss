@@ -1,15 +1,15 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 /* typography */
-.container2{
-  background-image: url("<%= asset_path('background.jpg') %>");
-  background-repeat:  no-repeat;
-  background-position:center center;
-  background-size: contain;
-  width:100%;
+header{
+  margin: 0;
 }
 .navbar-inverse{
   background-color: #BECCD4;
+}
+.red {
+  color: red;
+  margin-right: 17px;
 }
 
 .container2 {
@@ -63,9 +63,12 @@ p {
     background-color: #BECCD4;
 }
 
-
+.navbar{
+  margin: 0;
+}
 h1.first {
-  padding-top: 50px;
+  margin: 0;
+  padding-top: 20px;
 }
 .label{
   text-align: center;
@@ -167,29 +170,29 @@ textarea {
 
 /*検索ボックス*/
 #form1{
-outline: 0;/*クリック時の青い枠線消す*/	
-height: 50px;/*検索ボックスの高さ*/	
-padding: 4px 80px 3px 3px;/*テキスト位置調整*/	 
-border-radius: 2px 0 0 2px;/*検索ボックスの角を丸める*/		
-background:#eee;/*検索ボックスの背景カラー*/	
-display: block;
-margin: 14px 0 0 0;
-
-position: relative;
+  outline: 0;/*クリック時の青い枠線消す*/	
+  height: 50px;/*検索ボックスの高さ*/	
+  padding: 4px 80px 3px 3px;/*テキスト位置調整*/	 
+  border-radius: 2px 0 0 2px;/*検索ボックスの角を丸める*/		
+  background:#eee;/*検索ボックスの背景カラー*/	
+  display: block;
+  margin: 14px 0 0 0;
+  
+  position: relative;
 
 }
 /*検索ボタン*/
 .searchsubmit{
-width: 50px;/*検索ボタンの横幅*/ 
-height: 30px;/*検索ボタンの縦幅*/ 
-display: block;
-border-radius: 0 2px 2px 0;/*検索ボタンの角を丸める*/ 
-background: #7fbfff;/*検索ボタンの背景カラー*/ 
-border: none;/*検索ボタンの枠線を消す*/ 
-color: #fff;/*検索ボタンのテキストカラー*/ 
-font-weight: bold;/*検索ボタンのテキスト太字*/ 
-font-size: 16px;/*検索ボタンのフォントサイズ*/
-margin: 15px 15px 15px 3px;
+  width: 50px;/*検索ボタンの横幅*/ 
+  height: 30px;/*検索ボタンの縦幅*/ 
+  display: block;
+  border-radius: 0 2px 2px 0;/*検索ボタンの角を丸める*/ 
+  background: #7fbfff;/*検索ボタンの背景カラー*/ 
+  border: none;/*検索ボタンの枠線を消す*/ 
+  color: #fff;/*検索ボタンのテキストカラー*/ 
+  font-weight: bold;/*検索ボタンのテキスト太字*/ 
+  font-size: 16px;/*検索ボタンのフォントサイズ*/
+  margin: 15px 15px 15px 3px;
 }
 
 
@@ -243,21 +246,52 @@ color: #666;/*検索ボタンマウスオーバー時のフォントカラー*/
   cursor : pointer;
 }
 .btn-gradient-3d:active {
--webkit-transform: translateY(4px);
-transform: translateY(4px);
-box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
-border-bottom: none;
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
+  border-bottom: none;
 }
-
-#paper {
+#paper, #paper1 {
   margin-left: 150px;
   position: relative;
 }
-#paper-result1 {
+#paper-result1, #paper-result {
   position: absolute;
   top: 90px;
   left: 220px;
   font-family: 游明朝,"Yu Mincho",YuMincho,"Hiragino Mincho ProN","Hiragino Mincho Pro",HGS明朝E,メイリオ,Meiryo,serif;
   font-weight: bold;
   font-size: 14px;
+}
+
+
+
+.first, h1 {
+  font-family: 游明朝,"Yu Mincho",YuMincho,"Hiragino Mincho ProN","Hiragino Mincho Pro",HGS明朝E,メイリオ,Meiryo,serif;
+}
+.btn-circle-border-simple {
+  display: inline-block;
+  text-decoration: none;
+  color: #668ad8;
+  width: 120px;
+  height: 120px;
+  line-height: 120px;
+  border-radius: 50%;
+  border: solid 2px #668ad8;
+  text-align: center;
+  vertical-align: middle;
+  overflow: hidden;
+  font-weight: bold;
+  transition: .4s;
+  z-index: 100;
+}
+input.btn-circle-border-simple{
+  margin: 0;
+}
+
+.btn-circle-border-simple:hover {
+  background: #b3e1ff;
+}
+.circle-button{
+  padding-top: 30px;
 }
