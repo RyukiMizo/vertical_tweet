@@ -23,10 +23,6 @@
             <% end %>
         </li>
         
-        <li class="home-home">
-          <%= link_to "ホーム",root_path %>
-        </li>
-
         <li class="home-use">
           <%= link_to "ヘルプ", help_path %>
         </li>
@@ -44,9 +40,16 @@
               <%= link_to "ログアウト", logout_path, method: :delete %>
             </li>
         <% else %>
-          <li class="login"><%= link_to login_path do %>
-          <i class="fas fa-sign-in-alt fa-x"></i>ログイン
-          <% end %></li>
+          <li class="login">
+            <%= link_to login_path do %>
+              <i class="fas fa-sign-in-alt fa-x"></i>ログイン
+            <% end %>
+          </li>
+          
+          <li class="sign-up">
+            <%= link_to "新規登録", signup_path %>
+          </li>
+          
         <% end %>
       </ul>
     </nav>

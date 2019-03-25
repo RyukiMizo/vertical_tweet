@@ -1,6 +1,7 @@
 <h1 class="first">縦文字変換</h1>
 
 <% if logged_in? %>
+
 <p>※6~18文字以内</p>
   <%= form_for(@post) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
@@ -8,19 +9,29 @@
         :size => "600x50", :class => "content1" %><br />
     <div class="btn-gradient-3d click">縦に変換</div>
     <br>
-    <textarea id = "txtbox" rows="600" cols="50" class = "content2"></textarea>
+    <textarea id="txtbox" rows="600" cols="50" class = "content2"></textarea>
     <br />
     <button id="tweet"class="btn btn-primary"><i class="fab fa-twitter"></i> ツイート</button>
     <%= f.submit "投稿する", class: "btn btn-primary" %>
   <% end %>
   
 <% else %>
-    <textarea rows="600" cols="50" class = "content3" id = "texta1"></textarea>
-    <br />
-    <div class="btn-gradient-3d click1">縦に変換</div>
-    <br>
-    <textarea rows="600" cols="50" class="content4" id="txtbox1"></textarea><br />
-  <button id="tweet1"class="btn btn-primary"><i class="fab fa-twitter"></i> ツイート</button>
+
+  　　<div class="row">
+    　　  <div class="col-md-3">
+            <textarea rows="600" cols="50" class="content3" id="texta1" name="test1"></textarea>
+            <br />
+            <div class="btn-gradient-3d click1">縦に変換</div>
+            <br>
+            <textarea rows="600" cols="50" class="content4" id="txtbox1"></textarea><br />
+            <button id="tweet1"class="btn btn-primary"><i class="fab fa-twitter"></i> ツイート</button>
+        </div>
+        <div class="col-md-3">
+          <%= image_tag "paper.png", size: "150x450", id: "paper" %>
+          <div id="paper-result1"></div>
+        </div>
+      </div>
+
 <% end %>
 
 <!-- 最初のスクリプト -->
@@ -162,4 +173,24 @@
   var str = "水蛙古\nの飛池\n音びや\n　込　\n　む　";
   $(".content4").text(str);
 </script>
+
+<script>
+  $(document).ready(function(){
+    var str1 = $('textarea[name="test1"]').val();
+    $("#paper-result1").html("<span class='paper-cha'>" + str1 + "</span>")
+    $('#texta1').on('keyup', function() {
+      
+      str1 = $('textarea[name="test1"]').val();
+      $("#paper-result1").html("<span class='paper-cha'>" + str1 + "</span>")
+    });
+  });
+</script>
+
+<style>
+  .paper-cha{
+    -ms-writing-mode: tb-rl;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+  }
+</style>
 

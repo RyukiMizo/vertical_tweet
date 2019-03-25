@@ -1,0 +1,39 @@
+@media screen and (max-width: 480px) {
+  #form1{
+    width: 250px;
+  }
+  #form2{
+    position: relative;
+  }
+  .btn-gradient-3d-orange{
+    position: absolute;
+    left: 250px;
+    top: -45px;
+  }
+  #texta, #texta1{
+    min-height: 80px;
+    max-height: 80px;
+    min-width: 130px;
+    max-width: 130px;
+  }
+  #txtbox, #txtbox1{
+    min-height: 280px;
+    max-height: 280px;
+    min-width: 130px;
+    max-width: 130px;
+  }
+  .row {
+    position: relative;
+  }
+  #paper {
+    margin: 0;
+    position: absolute;
+    top: -560px;
+    left: 160px;
+  }
+  .paper-cha {
+    position: absolute;
+    top: -560px;
+    left: -3px;
+  }
+}

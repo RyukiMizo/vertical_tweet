@@ -1,6 +1,13 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 /* typography */
+.container2{
+  background-image: url("<%= asset_path('background.jpg') %>");
+  background-repeat:  no-repeat;
+  background-position:center center;
+  background-size: contain;
+  width:100%;
+}
 .navbar-inverse{
   background-color: #BECCD4;
 }
@@ -240,4 +247,17 @@ color: #666;/*検索ボタンマウスオーバー時のフォントカラー*/
 transform: translateY(4px);
 box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
 border-bottom: none;
+}
+
+#paper {
+  margin-left: 150px;
+  position: relative;
+}
+#paper-result1 {
+  position: absolute;
+  top: 90px;
+  left: 220px;
+  font-family: 游明朝,"Yu Mincho",YuMincho,"Hiragino Mincho ProN","Hiragino Mincho Pro",HGS明朝E,メイリオ,Meiryo,serif;
+  font-weight: bold;
+  font-size: 14px;
 }
