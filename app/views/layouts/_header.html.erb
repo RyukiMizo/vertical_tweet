@@ -13,14 +13,10 @@
             :data => {:toggle=>"popover", :content => ""},) do %>
               <%= text_field_tag :search, "", id: "form1", class: "search__query", 
               name: "keyword", placeholder: "俳句を検索",autocomplete: "off" %>
-              <div id="search_result">
-              </div>
-          </div>
-        </li>
-
-        <li class="submit1">
-              <%= button_tag '検索', class: 'btn-gradient-3d-orange' %>
+              <div id="search_result"></div>
+              <%= button_tag '検索', class: 'btn-gradient-3d-orange search-btn' %>
             <% end %>
+          </div>
         </li>
         
         <li class="home-use">
