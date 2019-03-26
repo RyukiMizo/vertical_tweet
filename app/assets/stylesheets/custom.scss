@@ -288,13 +288,12 @@ color: #666;/*検索ボタンマウスオーバー時のフォントカラー*/
   transition: .4s;
   z-index: 100;
 }
+
 input.btn-circle-border-simple{
   margin: 0;
 }
 
-.btn-circle-border-simple:hover {
-  background: #b3e1ff;
-}
+
 .circle-button{
   padding-top: 30px;
 }
@@ -417,4 +416,23 @@ input.btn-circle-border-simple{
 .delete{
   position: relative;
   top: 45px;
+}
+
+/****ユーザーの編集ページ****/
+
+.profile-image{
+  margin: 15px 0 0 20px;
+  width: 320px;
+
+}
+.change-image{
+  display: inline-block;
+  border: none;
+  padding: 0;
+}
+.sub-bt{
+  margin-left: 35px;
+}
+.remember {
+  margin-left: 20px;
 }

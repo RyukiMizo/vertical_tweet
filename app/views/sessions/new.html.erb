@@ -13,13 +13,14 @@
         <i class="fas fa-key fa-lg fa-fw" aria-hidden="true"></i>
         <%= link_to "（パスワードを忘れた場合）", password_resets_new_path %>
       </div>
-  </div>
-</div>      
+   
       <%= f.label :remember_me, class: "checkbox inline" do %>
         <%= f.check_box :remember_me %>
-        <span>コンピューターに記憶する</span>
+        <span >コンピューターに記憶する</span>
       <% end %>
       
       <%= f.submit "ログイン", class: "btn-gradient-3d sub-bt" %>
     <% end %>
+  </div>
+</div>   
     <p>新規登録が完了していない場合は<%= link_to "こちら", signup_path %>で登録して下さい！</p>
