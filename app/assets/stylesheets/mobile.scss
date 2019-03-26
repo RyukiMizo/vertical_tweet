@@ -1,6 +1,8 @@
 @media screen and (max-width: 768px) {
   
-  
+  .container2{
+    margin-top: 150px;
+  }
   /*    home    */
   
   
@@ -51,9 +53,15 @@
   
   
   /*  header  */
-  li{
-    a{
-      float: left;
-    }
-  }
+  
+  
+  li{a{float: left;}}
+
+
+/* 登録フォーム */
+
+div.cp_iptxt{
+  margin: 10px 0 10px 20px;
+  width: 80%;
+}
 }
