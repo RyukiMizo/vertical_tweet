@@ -39,6 +39,9 @@ p {
   font-size: 1.1em;
   line-height: 1.7em;
 }
+ul {
+  list-style: none;
+}
 #logo {
   float: left;
   margin-right: 10px;
@@ -295,7 +298,11 @@ input.btn-circle-border-simple{
 .circle-button{
   padding-top: 30px;
 }
-
+.paper-cha{
+    -ms-writing-mode: tb-rl;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+  }
 
 
 /**********new form***********/
@@ -384,4 +391,30 @@ input.btn-circle-border-simple{
 }
 .cp_iptxt input[type=password]:focus + i {
 	color: #da3c41;
+}
+.radius{
+  border-radius: 50%;
+}
+
+/***** _post  ******/
+.paper-result3{
+  position: relative;
+  top: -370px;
+  left: 57px;
+  font-family: 游明朝,"Yu Mincho",YuMincho,"Hiragino Mincho ProN","Hiragino Mincho Pro",HGS明朝E,メイリオ,Meiryo,serif;
+  font-weight: bold;
+  font-size: 14px;
+  -ms-writing-mode: tb-rl;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+}
+.one-post{
+  float: left;
+  height: 450px;
+  position: static;
+  left: -70px;
+}
+.delete{
+  position: relative;
+  top: 45px;
 }

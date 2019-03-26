@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new(user_params)
+    @user.image = "/images/default.png"
     if @user.save
       UserMailer.account_activation(@user).deliver_now
       flash[:info] = "アカウント確認メールを送りました。"
@@ -53,7 +54,7 @@ class UsersController < ApplicationController
   
   def user_params
     params.require(:user).permit(:name, :email, :password,
-                                   :password_confirmation, )
+                                   :password_confirmation, :image)
   end
   
   def correct_user

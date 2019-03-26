@@ -65,5 +65,11 @@ RSpec.describe User, type: :model do
         expect(@user).to be_valid
       end
     end
+    
+    context "画像の検証" do
+      it "" do
+       
+      end
+    end
   end
 end

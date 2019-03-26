@@ -11,9 +11,9 @@ RSpec.describe Post, type: :model do
         expect(post).to_not be_valid
         post = @user.posts.build(content: "a"*9)
         expect(post).to_not be_valid
-        post = @user.posts.build(content: "a"*21)
+        post = @user.posts.build(content: "a"*23)
         expect(post).to_not be_valid
-        post = @user.posts.build(content: "a"*20)
+        post = @user.posts.build(content: "a"*22)
         expect(post).to be_valid
       end
     end

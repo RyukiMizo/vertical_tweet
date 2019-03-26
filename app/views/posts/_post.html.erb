@@ -1,7 +1,13 @@
-<li id="post-<%= post.id %>">
-  <span class="user-image"><%= post.user.image %></span>
-  <span class="post-content"><%= post.content %></span>
+<li class="one-post">
   <% if current_user == post.user %>
-    <%= link_to "削除", post, method: :delete, data: {confirm: "元に戻せませんが、本当に削除しますか？"} %>
+      <%= link_to "削除", post, method: :delete, 
+      class: "delete", data: {confirm: "元に戻せませんが、本当に削除しますか？"} %>
   <% end %>
+  <div class="paper3">
+    <%= image_tag("paper.png", size: "150x450") %>
+  </div>
+  
+  <div class="paper-result3">
+    <%= post.content %>
+  </div>
 </li>
