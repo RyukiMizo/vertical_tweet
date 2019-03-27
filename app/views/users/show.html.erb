@@ -6,7 +6,7 @@
         <% if not @user.image? %>
           <%= image_tag("default.png", size: '160x160', class: "radius") %>
         <% else %>
-          <%= @user.image %>
+          <%= image_tag(@user.image.url, size: "160x160",class: "radius") %>
         <% end %>
         <%= @user.name %>
       </h1>

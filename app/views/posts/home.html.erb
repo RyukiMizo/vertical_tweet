@@ -1,5 +1,3 @@
-
-
 <% if logged_in? %>
 <h1 class="first">俳句で繋がる</h1>
 <p class="red">※6~18文字以内</p>
@@ -7,15 +5,14 @@
   <div class="col-md-3">
     <%= form_for(@post) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
-      <%= f.text_area :content, :id => "texta",
-          :size => "600x50", :class => "content1", :name => "test" %><br />
+      <%= f.text_area :content, :class => "content1", :id => "texta", :size => "600x50" %><br />
       <div class="btn-gradient-3d click">縦に変換</div>
       <br />
       <textarea id="txtbox" rows="600" cols="50" class = "content2"></textarea>
       <br /><br /><br />
       <div class="circle-button">
         <button id="tweet" class="btn-circle-border-simple"><i class="fab fa-twitter"></i> ツイート</button>
-        <%= f.submit "投稿する", class: "btn btn-primary" %>
+        <%= f.submit "投稿する", class: "btn-circle-border-simple sub" %>
       </div>
     <% end %>
   </div>
@@ -28,21 +25,21 @@
   </div>
 
 <% else %>
-<h1 class="first">俳句で繋がる</h1>
-<div class="row not-login">
-　<div class="col-md-3">
-    <textarea rows="600" cols="50" class="content3" id="texta1" name="test1"></textarea>
-    <br />
-    <div class="btn-gradient-3d click1">縦に変換</div>
-    <br>
-    <textarea rows="600" cols="50" class="content4" id="txtbox1"></textarea><br />
-    <button id="tweet1"class="btn btn-primary"><i class="fab fa-twitter"></i> ツイート</button>
+  <h1 class="first">俳句で繋がる</h1>
+  <div class="row not-login">
+  　<div class="col-md-3">
+      <textarea rows="600" cols="50" class="content3" id="texta1" name="test1"></textarea>
+      <br />
+      <div class="btn-gradient-3d click1">縦に変換</div>
+      <br>
+      <textarea rows="600" cols="50" class="content4" id="txtbox1"></textarea><br />
+      <button id="tweet1"class="btn btn-primary"><i class="fab fa-twitter"></i> ツイート</button>
+    </div>
+    <div class="col-md-3">
+      <%= image_tag "paper.png", size: "150x450", id: "paper1" %>
+      <div id="paper-result1"></div>
+    </div>
   </div>
-  <div class="col-md-3">
-    <%= image_tag "paper.png", size: "150x450", id: "paper1" %>
-    <div id="paper-result1"></div>
-  </div>
-</div>
 <% end %>
 
 
@@ -120,11 +117,11 @@
 
 <script>
   $(document).ready(function(){
-    var str1 = $('textarea[name="test"]').val();
+    var str1 = $('textarea[name="post[content]"').val();
     $("#paper-result").html("<span class='paper-cha'>" + str1 + "</span>")
     $('#texta').on('keyup', function() {
       
-      str1 = $('textarea[name="test"]').val();
+      str1 = $('textarea[name="post[content]"').val();
       $("#paper-result").html("<span class='paper-cha'>" + str1 + "</span>")
     });
   });

@@ -42,6 +42,7 @@ gem 'twitter'
 gem "jquery-rails"
 gem 'jquery-ui-rails'
 gem 'carrierwave', '~> 1.0'
+#gem "mini_magick"
 gem 'will_paginate',           '3.1.6'
 gem 'bootstrap-will_paginate', '1.0.0'
 
@@ -72,7 +73,8 @@ end
 
 group :production do
   gem 'pg', '0.20.0'
+  gem 'fog', '1.42'
 end
 
-# Windows環境ではtzinfo-dataというgemを含める必要があります
+# Windows環境ではtzinfo-dataというgemを含める必要がある
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
