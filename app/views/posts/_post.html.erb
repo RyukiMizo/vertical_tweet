@@ -4,7 +4,9 @@
       class: "delete", data: {confirm: "元に戻せませんが、本当に削除しますか？"} %>
   <% end %>
   <div class="paper3">
-    <%= image_tag("paper.png", size: "150x450") %>
+    <%= link_to post_path(post) do %>
+      <%= image_tag("paper.png", size: "150x450") %>
+    <% end %>
   </div>
   
   <div class="paper-result3">

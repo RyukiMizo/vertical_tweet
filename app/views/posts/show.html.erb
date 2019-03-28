@@ -1,7 +1,19 @@
 <% provide(:title, "俳句") %>
-<span class="user-image"><%= @post.user.image %></span>
-<span class="user"><%= @post.user.name %></span>
-<pre style="font-size:12pt;" class="post-content"><%= @post.content %></pre>
-<% if current_user == @post.user %>
-  <%= link_to "削除", @post, method: :delete, data: {confirm: "元に戻せませんが、本当に削除しますか？"} %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render @post %>
+    </div>
+    
+    <div class="col-md-9">
+      
+    </div>
+  </div>
+</div>
+
+
+<style>
+  li {
+    display: block;
+  }
+</style>
