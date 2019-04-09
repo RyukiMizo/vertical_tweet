@@ -69,6 +69,23 @@ RSpec.describe "編集,削除", type: :request do
         expect(flash[:danger]).to be_truthy
       end
     end
+    
+    context "パスワードが空の時" do
+      it "編集できる" do
+        user_params = FactoryBot.attributes_for(:user, password: "", name: "bbb")
+        patch user_path(@user), params: {user: user_params}
+        expect(@user.reload.name).to eq "bbb"
+      end
+    end
+    
+    context "パスワードがnilの時" do
+      it "編集できる" do
+        user_params = FactoryBot.attributes_for(:user, password: nil, name: "bbb")
+        patch user_path(@user), params: {user: user_params}
+        expect(@user.reload.name).to eq "bbb"
+      end
+    end
+        
   end
   
   describe "フレンドリーフォワーディング" do
@@ -119,4 +136,6 @@ RSpec.describe "編集,削除", type: :request do
     patch user_path(@user), params: {user: user_params}
     expect(@user.admin).to be_falsey
   end
+  
+  
 end

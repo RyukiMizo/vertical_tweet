@@ -398,8 +398,19 @@ input.btn-circle-border-simple{
 /***** _post  ******/
 .paper-result3{
   position: relative;
-  top: -370px;
+  top: -390px;
   left: 57px;
+  font-family: 游明朝,"Yu Mincho",YuMincho,"Hiragino Mincho ProN","Hiragino Mincho Pro",HGS明朝E,メイリオ,Meiryo,serif;
+  font-weight: bold;
+  font-size: 14px;
+  -ms-writing-mode: tb-rl;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+}
+.paper-name{
+  position: relative;
+  top: -310px;
+  left: 12px;
   font-family: 游明朝,"Yu Mincho",YuMincho,"Hiragino Mincho ProN","Hiragino Mincho Pro",HGS明朝E,メイリオ,Meiryo,serif;
   font-weight: bold;
   font-size: 14px;
@@ -417,7 +428,10 @@ input.btn-circle-border-simple{
   position: relative;
   top: 45px;
 }
+.emotion{
+  position: relative;
 
+}
 /****ユーザーの編集ページ****/
 
 .profile-image{

@@ -1,17 +1,16 @@
 require 'rails_helper'
 
-RSpec.describe "UsersLoginApi", type: :request do
+RSpec.describe "ログイン", type: :request do
   it "sessions/newにアクセスできること" do
     get '/login'
     expect(response).to have_http_status(:success)
   end
   
-  describe "<sessino#new>" do
-    context "ログインに失敗したとき" do
-      it "flashメッセージをキャッチする" do
+  describe "create" do
+    context "パスワードが空の時" do
+      it "ログインできない" do
         get '/login'
-        post '/login', params: {session: {email: "", password: ""}}
-        expect(response).to have_http_status(:success)
+        post '/login', params: {session: {email: "aa@aa.aa", password: ""}}
         expect(flash[:danger]).to be_truthy
         get root_path
         expect(flash[:danger]).to be_falsey
@@ -19,7 +18,7 @@ RSpec.describe "UsersLoginApi", type: :request do
     end
   end
   
-  describe "<session#destroy>" do
+  describe "destroy" do
     before do
       @user = FactoryBot.create(:user)
     end

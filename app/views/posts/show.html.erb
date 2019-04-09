@@ -1,12 +1,17 @@
 <% provide(:title, "俳句") %>
 <div class="container">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-2">
       <%= render @post %>
     </div>
-    
-    <div class="col-md-9">
-      
+
+    <div class="col-md-10">
+      <h2>
+        <%= link_to user_path(@post.user) do %>
+          <%= @post.user.name %>
+          <%= image_tag(@post.user.image.url, size: "80x80",class: "radius") %>
+        <% end %>
+      </h2>
     </div>
   </div>
 </div>
@@ -15,5 +20,8 @@
 <style>
   li {
     display: block;
+  }
+  h2 {
+    text-align: left;
   }
 </style>

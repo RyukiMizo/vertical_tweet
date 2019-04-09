@@ -20,14 +20,6 @@ RSpec.describe User, type: :model do
         @user.email = " "
         expect(@user).to_not be_valid
       end
-      
-      it "パスワードが無くてはいけない" do
-        @user.password = @user.password_confirmation = "aaaaaa"
-        expect(@user).to be_valid
-        
-        @user.password = @user.password_confirmation = " " * 6
-        expect(@user).to_not be_valid
-      end
     end
     
     context "emailの検証" do
@@ -64,6 +56,13 @@ RSpec.describe User, type: :model do
         @user.password = @user.password_confirmation = "a" * 6
         expect(@user).to be_valid
       end
+      
+      it "登録時に空ではいけない"do
+        @user = FactoryBot.build(:user, password: nil)
+        @user.password = @user.password_confirmation = nil
+        expect(@user).to_not be_valid
+      end
+
     end
     
     context "画像の検証" do

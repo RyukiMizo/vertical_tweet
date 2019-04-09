@@ -1,18 +1,19 @@
 class User < ApplicationRecord
   attr_accessor :remember_token, :activation_token, :reset_token #modelの外
-
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+  PW_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,32}\z/i
   
   has_secure_password
   before_save {self.email = email.downcase}
   before_create :create_activation_digest
   
-  validates :name, presence: true, length: {maximum: 50}
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+  validates :name, presence: true, length: {maximum: 10}
+  
   validates :email, presence: true, length: {maximum: 255},
   format: {with: VALID_EMAIL_REGEX},
   uniqueness: {case_sensitive: false}
-  validates :password,  length: {minimum: 6}, allow_nil: true
-  validates :password_confirmation,  length: {minimum: 6},allow_nil: true
+  validates :password,  length: {minimum: 6}, allow_nil: true, format: {with: PW_REGEX}
+  validates :password_confirmation,  length: {minimum: 6},allow_nil: true, format: {with: PW_REGEX}
   
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy

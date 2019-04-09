@@ -34,7 +34,11 @@ class PostsController < ApplicationController
   end
   
   def search
-    redirect_to search_index_post_path(search_params[:keyword])
+    if search_params[:keyword].blank?##空で検索した場合
+      redirect_to posts_path
+    else
+      redirect_to search_index_post_path(search_params[:keyword])
+    end
   end
   
   def search_js

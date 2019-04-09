@@ -10,6 +10,14 @@ RSpec.describe "User", type: :request do
       end
     end
     
+    context "パスワードが空の場合" do
+      it "ユーザーが作られない" do
+        expect {
+          post users_path, params: {user: {name:"aa", email: "aa@aa.aa", password: "", password_confirmation: ""}}
+        }.to_not change(User, :count)
+      end
+    end
+    
     context "正しい情報の場合" do
       it "ユーザーが作られる" do
         expect {
